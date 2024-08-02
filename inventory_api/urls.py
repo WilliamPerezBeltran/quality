@@ -23,7 +23,11 @@ from inventory.views import (
     SaleAPIView,
     SalesReportAPIView,
 )
-from inventory.auth_views import CustomTokenObtainPairView, CustomTokenRefreshView
+from inventory.auth_views import (
+    CustomTokenObtainPairView,
+    CustomTokenRefreshView,
+    custom_obtain_auth_token,
+)
 
 
 urlpatterns = [
