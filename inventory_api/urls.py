@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
 from django.urls import path
@@ -22,6 +23,8 @@ from inventory.views import (
     SaleAPIView,
     SalesReportAPIView,
 )
+from inventory.auth_views import CustomTokenObtainPairView, CustomTokenRefreshView
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -30,4 +33,8 @@ urlpatterns = [
     path("inventory/", InventoryAPIView.as_view(), name="inventory"),
     path("sale/", SaleAPIView.as_view(), name="sale"),
     path("sales-report/", SalesReportAPIView.as_view(), name="sales_report"),
+	# Token authentication endpoints
+    path('api-token-auth/', custom_obtain_auth_token, name='api_token_auth'),
+    path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', CustomTokenRefreshView.as_view(), name='token_refresh'),
 ]
