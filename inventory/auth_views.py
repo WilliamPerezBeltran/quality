@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authtoken.models import Token
 
-
 @api_view(["POST"])
 def custom_obtain_auth_token(request):
     """Custom view for obtaining token"""
