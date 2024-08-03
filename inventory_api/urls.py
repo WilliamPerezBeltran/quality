@@ -16,12 +16,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from django.urls import path
 from inventory.views import (
     ProductAPIView,
     InventoryAPIView,
     SaleAPIView,
     SalesReportAPIView,
+    HomePageView,
 )
 from inventory.auth_views import (
     CustomTokenObtainPairView,
@@ -31,6 +31,7 @@ from inventory.auth_views import (
 
 
 urlpatterns = [
+    path("", HomePageView.as_view(), name="home"),
     path("admin/", admin.site.urls),
     path("product/", ProductAPIView.as_view(), name="product"),
     path("product/<int:product_id>/", ProductAPIView.as_view(), name="update_product"),

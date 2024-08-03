@@ -4,8 +4,19 @@ from rest_framework.views import APIView
 from .models import Product, Inventory, Sale
 from .serializers import ProductSerializer, InventorySerializer, SaleSerializer
 import logging
+from rest_framework.permissions import AllowAny
 
 logger = logging.getLogger(__name__)
+
+
+class HomePageView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        return Response(
+            {"message": "Welcome to the API home page tecnical test "},
+            status=status.HTTP_200_OK,
+        )
 
 
 class ProductAPIView(APIView):
