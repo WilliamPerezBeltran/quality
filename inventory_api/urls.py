@@ -22,6 +22,7 @@ from inventory.views import (
     SaleAPIView,
     SalesReportAPIView,
     HomePageView,
+    RegisterUserAPIView,
 )
 from inventory.auth_views import (
     CustomTokenObtainPairView,
@@ -32,6 +33,7 @@ from inventory.auth_views import (
 
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
+    path("register/", RegisterUserAPIView.as_view(), name="register"),
     path("admin/", admin.site.urls),
     path("product/", ProductAPIView.as_view(), name="product"),
     path("product/<int:product_id>/", ProductAPIView.as_view(), name="update_product"),
