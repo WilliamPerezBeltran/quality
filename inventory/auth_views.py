@@ -8,7 +8,6 @@ from rest_framework.authtoken.models import Token
 
 @api_view(["POST"])
 def custom_obtain_auth_token(request):
-    """Custom view for obtaining token"""
     return obtain_auth_token(request)
 
 
