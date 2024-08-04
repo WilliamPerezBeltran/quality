@@ -2,9 +2,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Product, Inventory, Sale
-from .serializers import ProductSerializer, InventorySerializer, SaleSerializer
+from .serializers import ProductSerializer, InventorySerializer, SaleSerializer, UserSerializer
 import logging
 from rest_framework.permissions import AllowAny
+import pdb
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ class HomePageView(APIView):
 
 class RegisterUserAPIView(APIView):
     permission_classes = [AllowAny]
-
+    
     def post(self, request, format=None):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
