@@ -4,16 +4,18 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authtoken.models import Token
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
 @api_view(["POST"])
 def custom_obtain_auth_token(request):
-    return obtain_auth_token(request)
+	return obtain_auth_token(request)
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
-    permission_classes = (AllowAny,)
+	serializer_class = TokenObtainPairSerializer
+	permission_classes = (AllowAny,)
 
 
 class CustomTokenRefreshView(TokenRefreshView):
-    permission_classes = (AllowAny,)
+	permission_classes = (AllowAny,)
